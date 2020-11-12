@@ -1,29 +1,15 @@
-import { SetRequired } from 'type-fest';
+import { env } from  'process';
 import { merge } from 'merge-anything';
+import { parse } from 'dotenv';
+import { pick } from 'filter-anything';
+import { readFileSync } from 'fs';
 
-class My {
-  foo!: string;
-  bar?: string;
-  baz: string | undefined;
-  private _foo: string = '';
-}
+const parsed = parse(readFileSync('.env'));
 
-type MyPartial = SetRequired<Partial<My>, 'baz'>;
-type MyDefaults = SetRequired<My, 'bar'> ;
-type MyArgs = Required<My>;
+export const FooKey = 'FOO';
+env[FooKey] = 'foo';
 
-const input: MyPartial = {
-  baz: 'override',
-};
+export const EnvLast = merge(parsed, env);
+export const EnvFirst = merge(env, parsed)
 
-const defaults: MyDefaults = {
-  foo: 'a',
-  bar: 'b',
-  baz: 'c',
-};
-
-
-class Bar {
-  constructor( my: MyArgs) {}
-}
-new Bar(merge(defaults, input));
+export const JustFoo = pick(env, [FooKey]);
