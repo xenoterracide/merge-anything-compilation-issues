@@ -6,9 +6,9 @@ __metadata:
   cacheKey: 7
 
 "is-what@npm:^3.11.3":
-  version: 3.11.4
-  resolution: "is-what@npm:3.11.4"
-  checksum: 803f7546c144e46773bf8a7255df084c8ade5c6e555da5f52d1d4b2957aaecfbb303812654b5edc5198b651831657aa8eeb3182c41c2089298c053b1e6257de2
+  version: 3.12.0
+  resolution: "is-what@npm:3.12.0"
+  checksum: d343342b1c2a013fe5afe05bf6e08c75c113d9d33dd61a3dd180551c6eed45811c3d9184be695e67ca36da0bc2921c396d4c7409bfce22418dfbc66a9e906771
   languageName: node
   linkType: hard
 

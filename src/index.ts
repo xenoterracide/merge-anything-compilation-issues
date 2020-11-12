@@ -1,19 +1,29 @@
-import { SetOptional, SetRequired } from 'type-fest';
-
+import { SetRequired } from 'type-fest';
 import { merge } from 'merge-anything';
 
 class My {
   foo!: string;
   bar?: string;
   baz: string | undefined;
+  private _foo: string = '';
 }
 
-const input: SetRequired<Partial<My>, 'baz'> = {
-  baz: '',
+type MyPartial = SetRequired<Partial<My>, 'baz'>;
+type MyDefaults = SetRequired<My, 'bar'> ;
+type MyArgs = Required<My>;
+
+const input: MyPartial = {
+  baz: 'override',
 };
 
-const defaults: SetOptional<My, 'baz'> = {
-  foo: 'bar',
+const defaults: MyDefaults = {
+  foo: 'a',
+  bar: 'b',
+  baz: 'c',
 };
 
-const result: My = merge(defaults, input);
+
+class Bar {
+  constructor( my: MyArgs) {}
+}
+new Bar(merge(defaults, input));
