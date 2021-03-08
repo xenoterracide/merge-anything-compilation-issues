@@ -10,6 +10,6 @@ export const FooKey = 'FOO';
 env[FooKey] = 'foo';
 
 export const EnvLast = merge(parsed, env);
-export const EnvFirst = merge(env, parsed)
+export const EnvFirst = merge({...env}, parsed)
 
-export const JustFoo = pick(env, [FooKey]);
+export const JustFoo = pick({...env}, [FooKey]);
